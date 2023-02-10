@@ -82,7 +82,7 @@ function main($argv) {
     $ingredientsById = [];
     
     foreach ($ingredients as $ingredient) {
-        $ingredientsMenu[$ingredient->type_code]['items'][$ingredient->type_id] = [
+        $ingredientsMenu[$ingredient->type_code][$ingredient->type_id] = [
             'type' => $ingredient->type_title,
             'value' => $ingredient->ingredient_title,
             'price' => $ingredient->ingredient_price
@@ -101,7 +101,7 @@ function main($argv) {
             return 'Bad request';
         } else {
             $arr = [];
-            foreach ($ingredientsMenu[$type]['items'] as $key => $item) {
+            foreach ($ingredientsMenu[$type] as $key => $item) {
                 $arr[] = $key;
             }
             if ($count > count($arr)) {
